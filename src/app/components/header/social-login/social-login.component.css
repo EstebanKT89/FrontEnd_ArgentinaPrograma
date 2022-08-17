@@ -1,0 +1,10 @@
+img{
+    width: 50px;
+}
+#social img{
+    padding: 0px 2px 0px 2px;
+}
+.btn{
+    font-weight: bold;
+    border-width: medium;
+}

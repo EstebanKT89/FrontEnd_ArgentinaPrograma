@@ -1,0 +1,33 @@
+.container{
+    background-color:#90bff5e1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.redes{
+    margin-right: 0.5em;
+}
+#ApLogo{
+    width: 150px;
+}
+img{
+    width: 50px;
+}
+#banner{
+    width: 100%;
+    height: 350px;
+}
+
+/*Vista para celular*/
+@media (max-width: 575px){
+    .container{
+        flex-direction: column;
+    }
+    .redes{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0.5em;
+    }
+
+}
