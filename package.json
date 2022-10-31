@@ -25,6 +25,7 @@
     "bootstrap": "^5.2.0",
     "bootstrap-icons": "^1.9.1",
     "ng-circle-progress": "^1.6.0",
+    "request": "^2.79.0",
     "rxjs": "~7.5.0",
     "sweetalert2": "^11.6.4",
     "tslib": "^2.3.0",
