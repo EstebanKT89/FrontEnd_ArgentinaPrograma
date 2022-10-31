@@ -1,0 +1,16 @@
+{
+  "hosting": {
+    "public": "dist/proyecto-integrador-arg-prog-esteban-gallar",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

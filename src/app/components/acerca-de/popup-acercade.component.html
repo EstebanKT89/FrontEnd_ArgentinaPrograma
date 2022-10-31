@@ -1,0 +1,49 @@
+<ng-template #content let-modal>
+    <div class="abrir-modal animacion fadeIn">
+        <div class="modal" tabindex="-1" style="display:block;">
+            <div class="modal-dialog modal-md">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="modal-basic-title"> Editar Persona</h4>
+                  <button type="button" #closebtn class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')" ></button>
+                </div>
+                <div class="modal-body">
+                  <div class="container" style="font-weight:bold">
+                    <form [formGroup]="perfilForm" (ngSubmit)="onUpdate()"  novalidate #f="ngForm">
+                        <div class="form-group">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" class="form-control" name="nombre" formControlName="nombre">
+                        </div>
+                        <div class="form-group">
+                            <label for="apellido">Apellido</label>
+                            <input type="text" class="form-control" name="apellido" formControlName="apellido">
+                        </div>
+                        <div class="form-group">
+                            <label for="profesion">Profesión</label>
+                            <input type="text" class="form-control" name="profesion" formControlName="profesion">
+                        </div>
+                        <div class="form-group">
+                            <label for="descripcion">Descripción</label>
+                            <input type="text" class="form-control" name="descripcion" formControlName="descripcion">
+                        </div>
+                        <div class="form-group">
+                            <label for="img">Imagen de perfil</label>
+                            <input type="file" class="form-control" id="img" name="img" (change)="uploadImage($event, 1)" accept=".jpg, .jpeg, .png">
+                        </div>
+                        <div class="modal-footer">
+                        <button [disabled]="perfilForm.invalid" type="submit" class="btn btn-primary">
+                            Editar
+                        </button>
+                    </div>
+                    </form>
+                  </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+    </ng-template>
+    <button class="btn btn-dark" #popupbtn id="popupbtn" type="button" (click)="LoadEditData(1)" *ngIf="isLogged">
+        Editar Persona
+      </button>
+    

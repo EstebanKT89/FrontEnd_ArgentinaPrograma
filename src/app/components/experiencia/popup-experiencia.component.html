@@ -1,0 +1,36 @@
+<ng-template #content let-modal>
+<div class="abrir-modal animacion fadeIn">
+    <div class="modal" tabindex="-1" style="display:block;">
+        <div class="modal-dialog modal-md">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="modal-basic-title"> {{ titulo }}</h4>
+              <button type="button" #closebtn class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')" ></button>
+            </div>
+            <div class="modal-body">
+              <div class="container" style="font-weight:bold">
+                <form [formGroup]="expForm" (ngSubmit)="onAction()"  novalidate #f="ngForm">
+                    <div class="form-group">
+                        <label for="nombreExp">Nombre de la empresa</label>
+                        <input type="text" class="form-control" name="nombreExp" formControlName="nombreExp">
+                    </div>
+                    <div class="form-group">
+                        <label for="descripcionExp">Descripción de la tarea</label>
+                        <input type="text" class="form-control" name="descripcionExp" formControlName="descripcionExp">
+                    </div>
+                    <div class="modal-footer">
+                    <button [disabled]="expForm.invalid" type="submit" class="btn btn-primary">
+                        {{ btnModal }}
+                    </button>
+                </div>
+                </form>
+              </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+</ng-template>
+<button class="btn btn-dark" #popupbtn id="popupbtn" type="button" (click)="open()" *ngIf="isLogged">
+    Nueva Experiencia
+  </button>

@@ -1,25 +1,44 @@
-<div class="row">
+<div class="row elem">
   <h1>Hard & Soft skills</h1>
-  <div class="text-center col-sm-4 col-md-5 col-lg-4">
+  <div class="sep">
+    <app-popup-hys></app-popup-hys>
+  </div>
+  <div class="text-center col-sm-4 col-md-5 col-lg-4 circulo" *ngFor="let Skill of skill">
     <circle-progress
-      [percent]="75"
+      [percent]="Skill.porcentaje"
       [radius]="60"
       [showUnits]="false"
-      [imageSrc]="'../assets/html5Logo.png'"
-      [showImage]="true"
+      [imageSrc]="''"
+      [showImage]="false"
       [imageHeight]="60"
       [imageWidth]="60"
-      [title]="'HTML'"
-      [titleFontSize]="'1em'"
+      [title]="(Skill.nombre)"
+      [showTitle]="true"
+      [titleFontSize]="'1.1em'"
       [showSubtitle]="false"
       [outerStrokeWidth]="10"
       [innerStrokeWidth]="5"
-      [outerStrokeColor]="'#78C000'"
-      [innerStrokeColor]="'#C7E596'"
+      [outerStrokeColor]="'#B68E78'"
+      [innerStrokeColor]="'#EACDBC'"
       [animation]="true"
       [animationDuration]="500"
-    ></circle-progress>
+    >
+    </circle-progress>
+      <div *ngIf="isLogged">
+        <td>
+          <Button type="button" class="btn btn-light" (click)="edit(Skill.id)">
+            <i class="bi bi-pen-fill"></i>
+          </Button>
+        </td>
+        <td>
+          <Button type="button" class="btn btn-danger" (click)="delete(Skill.id)">
+            <i class="bi bi-trash-fill"></i>
+          </Button>
+        </td>
+      </div>
   </div>
+</div>
+  <!--
   <div class="text-center col-sm-4 col-md-5 col-lg-4">
     <circle-progress
       [percent]="55"
@@ -120,4 +139,4 @@
       [animationDuration]="500"
     ></circle-progress>
   </div>
-</div>
+-->

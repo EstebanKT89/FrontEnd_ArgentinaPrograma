@@ -1,17 +1,40 @@
-<div class="row">
-  <h1>Proyectos realizados</h1>
-  <div class="container">
-    <div class="col-sm-12 col-md-7 col-lg-7 parte1">
-      <h2>Calculadora Básica</h2>
-      <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officiis
-        molestiae id sunt totam reprehenderit, quas tenetur est nulla. Neque
-        distinctio ab tempora quo. Assumenda quos officiis praesentium
-        temporibus sit inventore?
-      </p>
-    </div>
-    <div class="col-sm-12 col-md-3 col-lg-3 offset-md-1 offset-lg-1 parte2">
-        <img src="../../../assets/calculadoraProyecto.png" class="img-fluid img-proyecto">
-    </div>
+<div class="row elem">
+  <h1>Proyectos</h1>
+  <div class="sep">
+    <app-popup-proyectos></app-popup-proyectos>
+  </div>
+  <div class="col-lg-12">
+    <table class="table">
+      <tbody>
+        <tr class="sep"  *ngFor="let Proyectos of proyecto">
+          <td class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            <div>
+              <h3>{{ Proyectos.nombreProyec }}</h3> 
+              <h5>({{Proyectos.fecha | date:'MM/yyyy'}})</h5>
+            </div>
+          </td>          
+          <td class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+              <div>
+              {{ Proyectos.descripcionProyec }}
+              </div>
+              <br>
+              <div>
+                <a href="{{ Proyectos.linkProyec }}" target="_blank">
+              {{ Proyectos.linkProyec }}
+                </a>
+              </div>       
+          <td class="col-xs-12 col-sm-1 col-md-1 col-lg-1">
+            <div class="btones" *ngIf="isLogged">
+                <Button type="button" class="btn btn-light" (click)="edit(Proyectos.id)">
+                  <i class="bi bi-pen-fill"></i>
+                </Button>
+                <Button type="button" class="btn btn-danger" (click)="delete(Proyectos.id)">
+                  <i class="bi bi-trash-fill"></i>
+                </Button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>

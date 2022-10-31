@@ -1,1 +1,29 @@
 @import "~bootstrap-icons/font/bootstrap-icons.css";
+.row{
+    padding: 10px 0px 10px 0px;
+    background-color: #90bff5e1;        
+}
+.elem{
+    padding-left: 10px;
+}
+.sep{
+    padding: 12px 12px;
+    background-color: #90bff5e1;
+}
+h1{
+    font-weight: bold;
+}
+
+.btones{
+    float: right;
+    
+}
+button.btn {
+    margin: 3px;
+}
+
+td, tr{
+
+   border-style: none; 
+   box-shadow: 2px -2px 15px #999;
+}

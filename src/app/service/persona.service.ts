@@ -1,17 +1,50 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { persona } from '../model/Persona.model';
+import { Observable, Subject, tap } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { Persona } from '../model/persona.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PersonaService {
-  URL = 'http://localhost:8080/personas/';
+  URL = environment.URL + 'personas/';
 
-  constructor(private http: HttpClient) {}
+  private _refresh$ = new Subject<void>();
 
-  public getPersona(): Observable<persona> {
-    return this.http.get<persona>(this.URL + 'traer/perfil');
+  get refresh$(){
+    return this._refresh$;
   }
+
+  constructor(private httpClient: HttpClient) {}
+
+  public lista(): Observable<Persona[]> {
+    return this.httpClient.get<Persona[]>(this.URL + 'lista');
+  }
+
+  public detail(id: number): Observable<Persona> {
+    return this.httpClient.get<Persona>(this.URL + `detail/${id}`)
+    .pipe(
+      tap(() => {
+        this._refresh$.next();
+      })
+    )
+  }
+
+/*  public save(educacion: Educacion): Observable<any> {
+    return this.httpClient.post<any>(this.URL + 'create', educacion);
+  }*/
+
+  public update(id: number, persona: Persona): Observable<any> {
+    return this.httpClient.put<any>(this.URL + `update/${id}`, persona)
+    .pipe(
+      tap(() => {
+        this._refresh$.next();
+      })
+    )
+  }
+
+ /* public delete(id:number): Observable<any>{
+    return this.httpClient.delete<any>(this.URL + `delete/${id}`);
+  }*/
 }

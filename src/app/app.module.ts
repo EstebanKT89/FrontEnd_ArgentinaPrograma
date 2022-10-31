@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { AcercaDeComponent } from './components/acerca-de/acerca-de.component';
 import { SocialLoginComponent } from './components/header/social-login/social-login.component';
-import { BannerComponent } from './components/header/banner/banner.component';
 import { ExperienciaComponent } from './components/experiencia/experiencia.component';
 import { EducacionComponent } from './components/educacion/educacion.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
@@ -16,10 +15,17 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { interceptorProvider } from './service/interceptor-service';
-import { NewExperienciaComponent } from './components/experiencia/new-experiencia.component';
-import { EditExperienciaComponent } from './components/experiencia/edit-experiencia.component';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideStorage,getStorage } from '@angular/fire/storage';
+import { PopupExperienciaComponent } from './components/experiencia/popup-experiencia.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PopupEducacionComponent } from './components/educacion/popup-educacion.component';
+import { PopupHysComponent } from './components/hys/popup-hys.component';
+import { PopupProyectosComponent } from './components/proyectos/popup-proyectos.component';
+import { PopupAcercadeComponent } from './components/acerca-de/popup-acercade.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +33,6 @@ import { EditExperienciaComponent } from './components/experiencia/edit-experien
     HeaderComponent,
     AcercaDeComponent,
     SocialLoginComponent,
-    BannerComponent,
     ExperienciaComponent,
     EducacionComponent,
     HysComponent,
@@ -35,15 +40,22 @@ import { EditExperienciaComponent } from './components/experiencia/edit-experien
     FooterComponent,
     HomeComponent,
     LoginComponent,
-    NewExperienciaComponent,
-    EditExperienciaComponent,
+    PopupExperienciaComponent,
+    PopupEducacionComponent,
+    PopupHysComponent,
+    PopupProyectosComponent,
+    PopupAcercadeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgCircleProgressModule.forRoot({}),
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideStorage(() => getStorage()),
+    NgbModule
   ],
   providers: [
     interceptorProvider
